@@ -22,4 +22,7 @@ printfn "----------------------------------------------------"
 let results = Facade.solve choiceFilelocation startDate howManyDays
 
 for (day, users) in results do
-    printfn "%A %A" day users
+    let date = DateTime.Parse(day)
+    let dow = date.DayOfWeek.ToString()
+    printfn "%A %A %A" (date.ToShortDateString()) dow  users
+
