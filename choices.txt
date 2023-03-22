@@ -1,0 +1,3 @@
+A:Everyday
+B:10
+C:Tue,fri
