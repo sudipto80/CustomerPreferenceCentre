@@ -11,7 +11,7 @@ module ChoiceParser =
 
 
  let toFullString (x: string) =
-    match x.ToUpper() with
+    match x.ToUpper().Trim() with
     | "SUN" -> "Sunday"
     | "MON" -> "Monday"
     | "TUE" -> "Tuesday"
