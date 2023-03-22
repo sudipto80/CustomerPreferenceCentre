@@ -19,7 +19,7 @@ let howManyDays = Console.ReadLine() |> int
 
 printfn "Report"
 printfn "----------------------------------------------------"
-let results = Facade.solve choiceFilelocation startDate howManyDays
+let results = CustomPrefCentreLib.Facade.solve choiceFilelocation startDate howManyDays
 
 for (day, users) in results do
     let date = DateTime.Parse(day)

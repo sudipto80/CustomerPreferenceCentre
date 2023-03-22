@@ -6,9 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+	
 	<Compile Include="PrefTypes.fs" />
     <Compile Include="ChoiceParser.fs" />
     <Compile Include="Logic.fs" />
+	  <Compile Include="Facade.fs" />
   </ItemGroup>
 
 </Project>

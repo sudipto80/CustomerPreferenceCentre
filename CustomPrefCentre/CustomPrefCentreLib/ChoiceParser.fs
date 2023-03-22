@@ -39,8 +39,10 @@ module ChoiceParser =
             printfn "Please choose a number between 1 and 28"
             None
         
+ let toUserAnaChoicePair (parts:string array) = 
+     (parts.[0], toUserChoice parts.[1])
 
  let getUserChoices (location: string) =
     File.ReadAllLines(location)
     |> Array.map (fun line -> line.Split(':'))
-    |> Array.map (fun toks -> (toks.[0], toUserChoice toks.[1]))
+    |> Array.map toUserAnaChoicePair

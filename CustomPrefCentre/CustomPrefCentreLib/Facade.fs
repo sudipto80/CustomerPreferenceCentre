@@ -1,11 +1,12 @@
-﻿
-module Facade 
+﻿namespace CustomPrefCentreLib
 
-open CustomPrefCentreLib.ChoiceParser
-open CustomPrefCentreLib.Logic
-open CustomPrefCentreLib.PrefTypes
 open System
+open Logic 
+open PrefTypes
+open ChoiceParser
 
+module Facade =
+   
 let private getDaysIndices daysRange (startDate: DateTime) =
     daysRange
     |> List.mapi (fun index days -> (index, startDate.AddDays(float days)))
