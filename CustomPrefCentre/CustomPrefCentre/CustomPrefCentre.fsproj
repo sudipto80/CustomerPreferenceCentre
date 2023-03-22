@@ -6,17 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    
-    
-    
-    
-    
-    <Compile Include="PrefTypes.fs" />
-	<Compile Include="Logic.fs" />
-    <Compile Include="ChoiceParser.fs" />
 	<Compile Include="Facade.fs" /> 
     <Compile Include="Program.fs" />
 	  
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CustomPrefCentreLib\CustomPrefCentreLib.fsproj" />
   </ItemGroup>
 
 </Project>

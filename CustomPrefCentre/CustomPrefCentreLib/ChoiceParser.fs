@@ -1,14 +1,16 @@
-﻿module ChoiceParser
+﻿
+namespace CustomPrefCentreLib
+module ChoiceParser = 
 
-open System.Text.RegularExpressions
-open PrefTypes
-open System
-open System.IO
+ open System.Text.RegularExpressions
+ open PrefTypes
+ open System
+ open System.IO
 
 
 
 
-let toFullString (x: string) =
+ let toFullString (x: string) =
     match x.ToUpper() with
     | "SUN" -> "Sunday"
     | "MON" -> "Monday"
@@ -20,7 +22,7 @@ let toFullString (x: string) =
     | _ -> raise (new System.ArgumentException($"Day name {x} is not recognized."))
 
 
-let toUserChoice (strRep:string) =
+ let toUserChoice (strRep:string) =
     match strRep.ToLower() with
     | "never" -> Some(Never)
     | "everyday" -> Some(Everyday)
@@ -38,7 +40,7 @@ let toUserChoice (strRep:string) =
             None
         
 
-let getUserChoices (location: string) =
+ let getUserChoices (location: string) =
     File.ReadAllLines(location)
     |> Array.map (fun line -> line.Split(':'))
     |> Array.map (fun toks -> (toks.[0], toUserChoice toks.[1]))

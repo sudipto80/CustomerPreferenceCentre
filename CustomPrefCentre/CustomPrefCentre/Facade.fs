@@ -1,8 +1,9 @@
-﻿module Facade
+﻿
+module Facade 
 
-open PrefTypes
-open Logic
-open ChoiceParser
+open CustomPrefCentreLib.ChoiceParser
+open CustomPrefCentreLib.Logic
+open CustomPrefCentreLib.PrefTypes
 open System
 
 let private getDaysIndices daysRange (startDate: DateTime) =

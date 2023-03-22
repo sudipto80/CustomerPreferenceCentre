@@ -1,17 +1,18 @@
-﻿module PrefTypes
+﻿namespace CustomPrefCentreLib
+module PrefTypes = 
 
-type UserChoice =
+ type UserChoice =
     | Never
     | Everyday
     | Day of int
     | DaysOfWeek of string array
 
-type Day =
+ type Day =
     { DateString: string
       Index: string
       DayOfTheWeek: string }
 
-let Weekdays =
+ let Weekdays =
     [| "Sunday"
        "Monday"
        "Tuesday"

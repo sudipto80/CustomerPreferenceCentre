@@ -1,10 +1,11 @@
-﻿module Logic
+﻿namespace CustomPrefCentreLib
+module Logic =
 
-open PrefTypes
-open System
+ open PrefTypes
+ open System
 
 
-let dayIndexedChoices (user: string) (choice: UserChoice) =
+ let dayIndexedChoices (user: string) (choice: UserChoice) =
     //Range is hardcoded as 90 days
     match choice with
     | Day onThisDay ->
@@ -20,7 +21,7 @@ let dayIndexedChoices (user: string) (choice: UserChoice) =
     | _ -> None
 
 
-let combineChoiceMap (loadedChoices : (string * UserChoice option)[])  =
+ let combineChoiceMap (loadedChoices : (string * UserChoice option)[])  =
     loadedChoices
     |> Array.filter(fun (_, choice) -> choice.IsSome)
     |> Array.map (fun (user, choice) -> dayIndexedChoices user choice.Value)
@@ -30,7 +31,8 @@ let combineChoiceMap (loadedChoices : (string * UserChoice option)[])  =
     |> Array.groupBy fst
     |> Map.ofSeq
    
-let getCustomerNames(daysMap: Map<string,(string * string)[]>)(day:string) = 
+ let getCustomerNames(daysMap: Map<string,(string * string)[]>)(day:string) = 
     if Map.containsKey day daysMap then daysMap.[day] |> Array.map snd 
     else [||]
+          
           

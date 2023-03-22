@@ -5,11 +5,11 @@ printfn "Enter the path of the file with customer choices : "
 let choiceFilelocation = Console.ReadLine()
 
 
-Console.Write("Enter starting year: ");
+printfn "Enter starting year: ";
 let year = Console.ReadLine() |> int 
-Console.Write("Enter starting month: ");
+printfn "Enter starting month: ";
 let month = Console.ReadLine() |> int;
-Console.Write("Enter starting day of the month: ");
+printfn "Enter starting day of the month: "
 let day = Console.ReadLine() |> int 
 
 let startDate = new DateTime(year,month,day);
