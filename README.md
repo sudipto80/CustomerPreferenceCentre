@@ -43,7 +43,7 @@ To run the program, select `CustomPrefCentre` as the start up project. Here is a
 
 ## Unit tests 
 To run the unit tests select `CustomPrefCentreLibTests` as the startup project. 
-Expecto is used to create the unit tests. The following screenshot shows tests ran and passed
+[Expecto](https://github.com/haf/expecto) is used to create the unit tests. The following screenshot shows tests ran and passed
 
 ![image](https://user-images.githubusercontent.com/1287634/227298035-fd8bab6b-9d76-4e75-aab1-222383eb3940.png)
 
