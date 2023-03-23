@@ -12,7 +12,7 @@ module Logic =
            DayOfWeek.Wednesday
            DayOfWeek.Thursday
            DayOfWeek.Friday
-           DayOfWeek.Saturday|]
+           DayOfWeek.Saturday |]
 
     /// <summary>
     /// Returns a flattened list of user choices.
@@ -32,7 +32,11 @@ module Logic =
 
             Some(theseDays)
         | DaysOfWeek days -> Some(days |> Array.map (fun day -> (string day, user)))
-        | Everyday -> Some(Weekdays |> Array.map (fun day -> (string day, user)))
+        | Everyday ->
+            Some(
+                Weekdays
+                |> Array.map (fun day -> (string day, user))
+            )
         | Never
         | _ -> None
 
@@ -41,10 +45,10 @@ module Logic =
     /// The index is the day, the value is user names
     /// </summary>
     /// <param name="loadedChoices">User choices with their names</param>
-    let combineChoiceMap (loadedChoices: (string * UserChoice option) []) =
+    let combineChoiceMap (loadedChoices: UserChoiceRow array) =
         loadedChoices
-        |> Array.filter (fun (_, choice) -> choice.IsSome)
-        |> Array.map (fun (user, choice) -> dayIndexedChoices user choice.Value)
+        |> Array.filter (fun userChoiceRow -> userChoiceRow.Choice.IsSome)
+        |> Array.map (fun userChoiceRow -> dayIndexedChoices userChoiceRow.UserName userChoiceRow.Choice.Value)
         |> Array.filter (fun days -> days.IsSome)
         |> Array.map (fun days -> days.Value)
         |> Array.concat

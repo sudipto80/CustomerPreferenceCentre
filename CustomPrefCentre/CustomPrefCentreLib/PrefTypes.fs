@@ -1,11 +1,9 @@
-﻿
-
-
-namespace CustomPrefCentreLib
+﻿namespace CustomPrefCentreLib
 
 /// Types in the system
 module PrefTypes =
     open System
+
     /// <summary>
     /// Represents user's choice
     /// </summary>
@@ -22,3 +20,11 @@ module PrefTypes =
         { Date: DateTime
           Index: int
           DayOfTheWeek: System.DayOfWeek }
+
+    type UserChoiceRow =
+        { UserName: string
+          Choice: UserChoice option }
+
+    type ReportRow =
+        { Date: DateTime
+          CustomerNames: string array }

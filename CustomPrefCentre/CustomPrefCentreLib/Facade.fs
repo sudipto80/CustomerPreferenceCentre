@@ -28,9 +28,10 @@ module Facade =
     let private getResult (days: Day list) combinedChoiceMap =
         days
         |> List.map (fun t ->
-            (t.Date,
-             Array.concat [| (getCustomerNames combinedChoiceMap (string t.DayOfTheWeek))
-                             (getCustomerNames combinedChoiceMap (string t.Index)) |]))
+            { Date = t.Date
+              CustomerNames =
+                Array.concat [| (getCustomerNames combinedChoiceMap (string t.DayOfTheWeek))
+                                (getCustomerNames combinedChoiceMap (string t.Index)) |] })
 
     /// <summary>
     /// The facade method to generate the report

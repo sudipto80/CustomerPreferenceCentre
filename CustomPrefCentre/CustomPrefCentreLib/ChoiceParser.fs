@@ -59,7 +59,7 @@ module ChoiceParser =
     /// Generates a pair with the user name and the choice
     /// </summary>
     /// <param name="parts">string representation of the user name and the choice</param>
-    let toUserAndChoicePair (parts: string array) = (parts.[0], toUserChoice parts.[1])
+    let toUserAndChoicePair (parts: string array) = { UserName = parts.[0]; Choice = toUserChoice parts.[1]}
 
     /// <summary>
     /// Loads user choices from the input text file
