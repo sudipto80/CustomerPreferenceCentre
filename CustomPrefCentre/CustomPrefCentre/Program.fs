@@ -21,11 +21,8 @@ let howManyDays = Console.ReadLine() |> int
 printfn "Report"
 printfn "----------------------------------------------------"
 
-let stopwatch = new System.Diagnostics.Stopwatch()
-stopwatch.Start()
 let reportRows =
     CustomPrefCentreLib.Facade.generateReport choiceFilelocation startDate howManyDays
-stopwatch.Stop()
 
 
 let concatUsers names =
@@ -37,6 +34,4 @@ for (day, users) in reportRows do
     let dayName = day.ToString("dd-MMMM-yyyy")
     printfn $"{(day.DayOfWeek.ToString().Substring(0, 3))} {dayName} {(concatUsers users)}"
 
-printfn "----------------------------------------------------"
-printfn $"Time taken {stopwatch.ElapsedMilliseconds} ms"
 printfn "----------------------------------------------------"
