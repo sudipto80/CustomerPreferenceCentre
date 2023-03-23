@@ -51,6 +51,11 @@ There are three projects in solution.
 | **`CustomPrefCentreLibTests`** | Expecto tests 
 
 ## Sample Run 
-To run the program, select `CustomPrefCentre` as the start up project 
+To run the program, select `CustomPrefCentre` as the start up project. Here is a sample run for the example scenario for 13 days. 
 
 ![](https://github.com/sudipto80/CustomerPreferenceCentre/blob/main/cpcDemo.gif)
+
+## Unit tests 
+To run the unit tests select `CustomPrefCentreLibTests` as the startup project. 
+
+
