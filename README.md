@@ -53,4 +53,4 @@ There are three projects in solution.
 ## Sample Run 
 To run the program, select `CustomPrefCentre` as the start up project 
 
-
+![](https://github.com/sudipto80/CustomerPreferenceCentre/blob/main/cpcDemo.gif)
