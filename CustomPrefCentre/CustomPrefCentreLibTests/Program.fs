@@ -227,10 +227,6 @@ let parsingTests =
               let path = "..\..\..\TestData\mixed_case_choices_with_spaces.txt"
               let choices = getUserChoices path
 
-              //A:Sun,Mon ,TUE
-              //B:MON ,Tue
-              //C:Tuesday
-
               Expect.equal choices.[0].UserName "A" "Expected A at the start "
 
               Expect.equal
@@ -256,6 +252,13 @@ let parsingTests =
               Expect.equal choices.[2].Choice.Value (DaysOfWeek([| DayOfWeek.Tuesday |])) "C selected only Tue."
           }
 
+          test "Never means Some(Never)" {
+              let path = "..\..\..\TestData\choices_never.txt"
+              let choices = getUserChoices path
+
+              Expect.equal choices.[0].UserName "A" "Expected A at the start "
+              Expect.equal choices.[0].Choice (Some(Never)) "A chose Never this time"
+          }
 
           ]
     |> testLabel "Parsing tests"

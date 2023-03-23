@@ -1,5 +1,4 @@
 ﻿open System
-open System.Text
 
 printfn "Welcome to Customer Preference Centre"
 printfn "Enter the path of the file with customer choices : "
@@ -21,7 +20,7 @@ let howManyDays = Console.ReadLine() |> int
 printfn "Report"
 printfn "----------------------------------------------------"
 
-let reportRows =
+let report =
     CustomPrefCentreLib.Facade.generateReport choiceFilelocation startDate howManyDays
 
 
@@ -30,8 +29,8 @@ let concatUsers names =
     |> Array.sortBy(fun name -> name)
     |> String.concat ","
 
-for (day, users) in reportRows do
+for row in report do
     let dayName = day.ToString("dd-MMMM-yyyy")
-    printfn $"{(day.DayOfWeek.ToString().Substring(0, 3))} {dayName} {(concatUsers users)}"
+    printfn $"{(row.Date.DayOfWeek.ToString().Substring(0, 3))} {dayName} {(concatUsers row.CustomerNames)}"
 
 printfn "----------------------------------------------------"
