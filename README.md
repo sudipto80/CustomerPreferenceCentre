@@ -47,6 +47,7 @@ To run the unit tests select `CustomPrefCentreLibTests` as the startup project.
 
 ![image](https://user-images.githubusercontent.com/1287634/227298035-fd8bab6b-9d76-4e75-aab1-222383eb3940.png)
 
-
+## Algorithm 
+The program first loads the choices, then flattens them out to create an index with the day and the Day of Week. Later these two lists are concatenated to get the list of customer names. 
 
 
