@@ -28,12 +28,25 @@ The program accepts user choices in form of an input text file like this
 Each row represents choice of a particular user. For example the first row represents the choice of user A; which is Everyday. 
 Last row represents the choice of the user C. 
 
+This string representation is parsed to the following type
+
+```fs
+    /// <summary>
+    /// Represents user's choice
+    /// </summary>
+    type UserChoice =
+        | Never
+        | Everyday
+        | Day of int
+        | DaysOfWeek of System.DayOfWeek array
+```
+
 ## Project structure
 There are three projects in solution. 
 
 | Project | Purpose 
 |---------|--------
-| CustomPrefCentreLib | Holds core functionalities to implement the Customer Preference Centre
-| CustomPrefCentre | F# Console Application to test the given sample case or any other (see sample run below)
-| CustomPrefCentreLibTests | Expecto tests 
+| **`CustomPrefCentreLib`** | Holds core functionalities to implement the Customer Preference Centre
+| **`CustomPrefCentre`** | F# Console Application to test the given sample case or any other (see sample run below)
+| **`CustomPrefCentreLibTests`** | Expecto tests 
 
