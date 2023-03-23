@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="TestData\Sun_Mon_Tue.txt" />
     <Content Include="TestData\choices.txt" />
     <Content Include="TestData\choices_never.txt" />
     <Compile Include="Program.fs" />

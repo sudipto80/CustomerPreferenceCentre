@@ -14,7 +14,7 @@ let tests =
               let path = "..\..\..\TestData\choices.txt"
               let startDate = new DateTime(2018, 4, 1)
               let howManyDays = 13
-              let result = CustomPrefCentreLib.Facade.solve path startDate howManyDays
+              let result = CustomPrefCentreLib.Facade.generateReport path startDate howManyDays
 
               Expect.equal 14 result.Length "Expected 14 rows in the report."
               Expect.equal [| "A" |] (snd result.[0]) "Expected A to be present on the report but not found."
@@ -79,7 +79,23 @@ let tests =
 
               let startDate = new DateTime(2018, 4, 1)
               let howManyDays = 13
-              let result = CustomPrefCentreLib.Facade.solve path startDate howManyDays
+              let result = CustomPrefCentreLib.Facade.generateReport path startDate howManyDays
+
+              Expect.equal 14 result.Length "Expected 14 rows in the report."
+
+              Expect.isTrue
+                  (result
+                   |> List.forall (fun t -> (snd t).Length = 0))
+                  "Nothing is expected "
+          }
+
+          test "Sun Mon Tue" {
+              let path =
+                  "..\..\..\TestData\Sun_Mon_Tue.txt"
+
+              let startDate = new DateTime(2018, 4, 1)
+              let howManyDays = 13
+              let result = CustomPrefCentreLib.Facade.generateReport path startDate howManyDays
 
               Expect.equal 14 result.Length "Expected 14 rows in the report."
 

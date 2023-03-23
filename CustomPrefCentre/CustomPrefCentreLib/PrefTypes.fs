@@ -1,22 +1,20 @@
 ﻿namespace CustomPrefCentreLib
-module PrefTypes = 
 
- type UserChoice =
-    | Never
-    | Everyday
-    | Day of int
-    | DaysOfWeek of string array
+/// Types in the system
+module PrefTypes =
+    /// <summary>
+    /// Represents user's choice
+    /// </summary>
+    type UserChoice =
+        | Never
+        | Everyday
+        | Day of int
+        | DaysOfWeek of System.DayOfWeek array
 
- type Day =
-    { DateString: string
-      Index: string
-      DayOfTheWeek: string }
-
- let Weekdays =
-    [| "Sunday"
-       "Monday"
-       "Tuesday"
-       "Wednesday"
-       "Thursday"
-       "Friday"
-       "Saturday" |]
+    /// <summary>
+    /// Represents the index type for generating the report
+    /// </summary>
+    type Day =
+        { DateString: string
+          Index: string
+          DayOfTheWeek: System.DayOfWeek }

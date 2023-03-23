@@ -19,9 +19,9 @@ let howManyDays = Console.ReadLine() |> int
 
 printfn "Report"
 printfn "----------------------------------------------------"
-let results = CustomPrefCentreLib.Facade.solve choiceFilelocation startDate howManyDays
+let reportRows = CustomPrefCentreLib.Facade.generateReport choiceFilelocation startDate howManyDays
 
-for (day, users) in results do
+for (day, users) in reportRows do
     let date = DateTime.Parse(day)
     let dow = date.DayOfWeek.ToString()
     printfn "%A %A %A" (date.ToShortDateString()) dow  users

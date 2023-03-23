@@ -1,0 +1,3 @@
+﻿A:Sun,Mon,Tue
+B:Mon,Tue
+C:Tue
