@@ -14,7 +14,7 @@ module ChoiceParser =
     /// </summary>
     /// <param name="x">the day name from the input file</param>
     let toDoW (x: string) =
-        match x.Substring(0, 3).ToUpper().Trim() with
+        match x.Substring(0,3).ToUpper().Trim() with
         | "SUN" -> DayOfWeek.Sunday
         | "MON" -> DayOfWeek.Monday
         | "TUE" -> DayOfWeek.Tuesday
@@ -30,7 +30,7 @@ module ChoiceParser =
     /// </summary>
     /// <param name="strRep">String representation of the user's choice. like "Never" or 10 or "Everyday"</param>
     let toUserChoice (strRep: string) =
-        match strRep.ToLower() with
+        match strRep.Trim().ToLower() with
         | "never" -> Some(Never)
         | "everyday" -> Some(Everyday)
         | whatever ->
@@ -42,7 +42,7 @@ module ChoiceParser =
                             // Users might leave extra spaces in between the day names
                             // so we need to trim it before
                             |> Array.map (fun d -> d.Trim())
-                            |> Array.distinct
+                            |> Array.distinctBy (fun t -> t.Substring(0,3))
                             |> Array.map toDoW
                         )
                     )

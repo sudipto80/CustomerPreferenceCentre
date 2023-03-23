@@ -7,13 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="TestData\Sun_Mon_Tue.txt" />
+    <Content Include="TestData\duplicate_choices.txt" />
+    <Content Include="TestData\mixed_case_choices_with_spaces.txt" />
     <Content Include="TestData\choices.txt" />
     <Content Include="TestData\choices_never.txt" />
     <Compile Include="Program.fs" />
   </ItemGroup>
-
-  <ItemGroup />
 
   <ItemGroup>
     <PackageReference Include="Expecto" Version="9.0.4" />
