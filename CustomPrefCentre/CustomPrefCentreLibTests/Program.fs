@@ -1,6 +1,4 @@
-﻿open CustomPrefCentreLib.Logic
-open CustomPrefCentreLib.ChoiceParser
-open CustomPrefCentreLib.Logic
+﻿open CustomPrefCentreLib.ChoiceParser
 open CustomPrefCentreLib.Facade
 open CustomPrefCentreLib.PrefTypes
 open Expecto
@@ -8,9 +6,6 @@ open System
 
 
 
-type UserChoice =
-    { UserName: string
-      Choice: UserChoice option }
 
 [<Tests>]
 let reportGenerationTests =
@@ -190,7 +185,7 @@ let parsingTests =
         "Parsing tests"
         [ test "Parsing simple choice file" {
               let path = "..\..\..\TestData\choices.txt"
-              let choices = CustomPrefCentreLib.ChoiceParser.getUserChoices path
+              let choices = getUserChoices path
 
               Expect.equal choices.[0].UserName "A" "Expected A at the start "
               Expect.equal choices.[0].Choice.Value Everyday "A has chosen Everyday ."
@@ -208,6 +203,59 @@ let parsingTests =
                   ))
                   "C selected Tue and Fri."
           }
+          test "Duplicate choices should be ignored" {
+              let path = "..\..\..\TestData\duplicate_choices.txt"
+              let choices = getUserChoices path
+
+              Expect.equal choices.[0].UserName "A" "Expected A at the start "
+              Expect.equal choices.[0].Choice.Value Everyday "A has chosen Everyday ."
+
+              Expect.equal choices.[1].UserName "B" "Second was B"
+              Expect.equal choices.[1].Choice.Value (Day(9)) "B selected every 10 days."
+
+              Expect.equal choices.[2].UserName "C" "C was at the end "
+
+              Expect.equal
+                  choices.[2].Choice.Value
+                  (DaysOfWeek(
+                      [| DayOfWeek.Tuesday
+                         DayOfWeek.Friday |]
+                  ))
+                  "C selected Tue and Fri."
+          }
+          test "Mixed cases and spaces should not affect" {
+              let path = "..\..\..\TestData\mixed_case_choices_with_spaces.txt"
+              let choices = getUserChoices path
+
+              //A:Sun,Mon ,TUE
+              //B:MON ,Tue
+              //C:Tuesday
+
+              Expect.equal choices.[0].UserName "A" "Expected A at the start "
+
+              Expect.equal
+                  choices.[0].Choice.Value
+                  (DaysOfWeek(
+                      [| DayOfWeek.Sunday
+                         DayOfWeek.Monday
+                         DayOfWeek.Tuesday |]
+                  ))
+                  "A has chosen Sun,Mon and Tue."
+
+              Expect.equal choices.[1].UserName "B" "Second was B"
+
+              Expect.equal
+                  choices.[1].Choice.Value
+                  (DaysOfWeek(
+                      [| DayOfWeek.Monday
+                         DayOfWeek.Tuesday |]
+                  ))
+                  "B selected Mon and Tue."
+
+              Expect.equal choices.[2].UserName "C" "C was at the end "
+              Expect.equal choices.[2].Choice.Value (DaysOfWeek([| DayOfWeek.Tuesday |])) "C selected only Tue."
+          }
+
 
           ]
     |> testLabel "Parsing tests"
