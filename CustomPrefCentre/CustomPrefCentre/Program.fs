@@ -30,7 +30,7 @@ let concatUsers names =
     |> String.concat ","
 
 for row in report do
-    let dayName = day.ToString("dd-MMMM-yyyy")
+    let dayName = row.Date.ToString("dd-MMMM-yyyy")
     printfn $"{(row.Date.DayOfWeek.ToString().Substring(0, 3))} {dayName} {(concatUsers row.CustomerNames)}"
 
 printfn "----------------------------------------------------"
