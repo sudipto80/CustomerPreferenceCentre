@@ -1,7 +1,11 @@
-﻿namespace CustomPrefCentreLib
+﻿
+
+
+namespace CustomPrefCentreLib
 
 /// Types in the system
 module PrefTypes =
+    open System
     /// <summary>
     /// Represents user's choice
     /// </summary>
@@ -15,6 +19,6 @@ module PrefTypes =
     /// Represents the index type for generating the report
     /// </summary>
     type Day =
-        { DateString: string
-          Index: string
+        { Date: DateTime
+          Index: int
           DayOfTheWeek: System.DayOfWeek }

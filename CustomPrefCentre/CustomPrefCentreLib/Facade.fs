@@ -15,16 +15,16 @@ module Facade =
         daysRange
         |> List.mapi (fun index days -> (index, startDate.AddDays(float days)))
         |> List.map (fun (index, date) ->
-            { Index = string index
-              DateString = date.ToShortDateString()
+            { Index =  index
+              Date = date
               DayOfTheWeek = date.DayOfWeek })
     
     let private getResult (days: Day list) combinedChoiceMap =
         days
         |> List.map (fun t ->
-            (t.DateString,
-             Array.concat [| (getCustomerNames combinedChoiceMap (string t.DayOfTheWeek))
-                             (getCustomerNames combinedChoiceMap t.Index) |]))
+            (t.Date.ToShortDateString(),
+             Array.concat [| (getCustomerNames combinedChoiceMap (string t.DayOfTheWeek ))
+                             (getCustomerNames combinedChoiceMap (string t.Index)) |]))
 
     let generateReport (location: string) (startDate: DateTime) (howMany: int) =
         let loadedChoices = getUserChoices location
