@@ -30,8 +30,8 @@ let tests =
               let C_getsOnlyOnTuesdays =
                   result
                   |> List.filter (fun (day, users) ->
-                      DateTime.Parse(day).DayOfWeek = DayOfWeek.Tuesday
-                      || DateTime.Parse(day).DayOfWeek = DayOfWeek.Friday)
+                      day.DayOfWeek = DayOfWeek.Tuesday
+                      || day.DayOfWeek = DayOfWeek.Friday)
                   |> List.forall (fun (_, users) -> users |> Array.contains "C")
 
               Expect.isTrue C_getsOnlyOnTuesdays "C is expected to get reports only on Tuesdays and Fridays"
@@ -40,20 +40,20 @@ let tests =
               //Validating the whole report
               //One row at a time
               let expected =
-                  [ ("4/1/2018", [| "A" |])
-                    ("4/2/2018", [| "A" |])
-                    ("4/3/2018", [| "A"; "C" |])
-                    ("4/4/2018", [| "A" |])
-                    ("4/5/2018", [| "A" |])
-                    ("4/6/2018", [| "A"; "C" |])
-                    ("4/7/2018", [| "A" |])
-                    ("4/8/2018", [| "A" |])
-                    ("4/9/2018", [| "A" |])
-                    ("4/10/2018", [| "A"; "C"; "B" |])
-                    ("4/11/2018", [| "A" |])
-                    ("4/12/2018", [| "A" |])
-                    ("4/13/2018", [| "A"; "C" |])
-                    ("4/14/2018", [| "A" |]) ]
+                  [ (DateTime.Parse("4/1/2018"), [| "A" |])
+                    (DateTime.Parse("4/2/2018"), [| "A" |])
+                    (DateTime.Parse("4/3/2018"), [| "A"; "C" |])
+                    (DateTime.Parse("4/4/2018"), [| "A" |])
+                    (DateTime.Parse("4/5/2018"), [| "A" |])
+                    (DateTime.Parse("4/6/2018"), [| "A"; "C" |])
+                    (DateTime.Parse("4/7/2018"), [| "A" |])
+                    (DateTime.Parse("4/8/2018"), [| "A" |])
+                    (DateTime.Parse("4/9/2018"), [| "A" |])
+                    (DateTime.Parse("4/10/2018"), [| "A"; "C"; "B"|])
+                    (DateTime.Parse("4/11/2018"), [| "A" |])
+                    (DateTime.Parse("4/12/2018"), [| "A" |])
+                    (DateTime.Parse("4/13/2018"), [| "A"; "C" |])
+                    (DateTime.Parse("4/14/2018"), [| "A" |]) ]
 
               Expect.equal result expected "Something wrong in the report"
 
