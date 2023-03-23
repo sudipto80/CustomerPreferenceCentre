@@ -50,3 +50,7 @@ There are three projects in solution.
 | **`CustomPrefCentre`** | F# Console Application to test the given sample case or any other (see sample run below)
 | **`CustomPrefCentreLibTests`** | Expecto tests 
 
+## Sample Run 
+To run the program, select `CustomPrefCentre` as the start up project 
+
+
